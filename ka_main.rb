@@ -1,6 +1,7 @@
 #!/usr/bin/ruby
 
 require 'gtk3'
+require_relative './rka'
 
 class RubyKa < Gtk::Window
 
@@ -29,7 +30,7 @@ class RubyKa < Gtk::Window
 
 		label = Gtk::Label.new
 		label.set_markup("<span foreground='green'>Ka. El Ka es una rueda, cuyo único propósito es girar, y al final vuelve al mismo lugar donde empieza. Lo que haces vuelve a perseguirte.\n\nEl tiempo es un rostro en el agua.\n\nSi es el Ka, vendrá como el viento, y tus planes resistirán ante él no más que un granero ante un ciclón.\n\n</span><span foreground='white'>¿Cual es el número de tu ka-tet?</span>")
-		label.set_justify(Gtk::JUSTIFY_CENTER)
+		label.set_justify(Gtk::Justification::CENTER)
 		label.set_wrap(true)
 		vbox.pack_start label, :expand => false, :fill=> false, :padding => 3
 		
@@ -64,17 +65,59 @@ class RubyKa < Gtk::Window
 	end
 
 	def on_key_release sender, label
-		label.set_markup("<span foreground='green'>"+sender.text+"</span>")
+		label.set_markup("<span foreground='blue'>"+sender.text+"</span>")
 	end
 	
 	def on_ok_button_clicked entry, label
-		label.set_markup("<span foreground='green'>"+entry.text+"</span>")
+		label.set_markup("<span foreground='blue'>"+entry.text+"</span>")
+		rueda = Rueda.new entry.text, method(:rueda_window)
 	end
 
 	def on_reset_clicked label
 		label.set_markup("<span foreground='green'>Ka. El Ka es una rueda, cuyo único propósito es girar, y al final vuelve al mismo lugar donde empieza. Lo que haces vuelve a perseguirte.\n\nEl tiempo es un rostro en el agua.\n\nSi es el Ka, vendrá como el viento, y tus planes resistirán ante él no más que un granero ante un ciclón.\n\n</span><span foreground='white'>¿Cual es el número de tu ka-tet?</span>")
 	end
+
+	def rueda_window (num)
+		new_window = RubyRueda.new(num)
+		return new_window
+	end
+	
 end
+
+class RubyRueda < Gtk::Window
+
+        def initialize (num)
+                super
+
+                init_ui num
+        end
+
+        def init_ui num
+
+                #General config         
+                set_border_width 10
+                override_background_color :normal, Gdk::RGBA::new(0.6, 0.25, 0.75, 0.9)
+                set_title "Rueda del Ka de "+num
+                signal_connect "destroy" do
+                        Gtk.main_quit
+                end
+		set_default_size 210, 210
+                set_window_position(Gtk::Window::POS_MOUSE)
+
+		#scroll window
+		scroll = Gtk::ScrolledWindow.new
+		@label = Gtk::Label.new
+		scroll.add_with_viewport(@label)
+		
+		add scroll
+		show_all
+	end
+
+	def update_text text
+		@label.set_text @label.text+text+"\n"
+	end
+end
+
 
 #Gtk.init
 	window = RubyKa.new
