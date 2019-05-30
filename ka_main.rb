@@ -49,7 +49,7 @@ class RubyKa < Gtk::Window
 		reset_button = Gtk::Button.new( :label => "Discordia")
 		reset_button.set_size_request 70, 30
 		reset_button.signal_connect("clicked") do 
-			on_reset_clicked label
+			on_reset_clicked label, entry
 		end
 		hbox.add reset_button
 		hbox.add ok_button
@@ -65,15 +65,17 @@ class RubyKa < Gtk::Window
 	end
 
 	def on_key_release sender, label
-		label.set_markup("<span foreground='blue'>"+sender.text+"</span>")
+		label.set_markup("<span foreground='green'><b>Ka-tet del "+sender.text+"</b></span>")
+                rueda = Rueda.new sender.text, method(:rueda_window)
 	end
 	
 	def on_ok_button_clicked entry, label
-		label.set_markup("<span foreground='blue'>"+entry.text+"</span>")
+		label.set_markup("<span foreground='green'><b>Ka-tet del "+entry.text+"</b></span>")
 		rueda = Rueda.new entry.text, method(:rueda_window)
 	end
 
-	def on_reset_clicked label
+	def on_reset_clicked label, entry
+		entry.set_text("")
 		label.set_markup("<span foreground='green'>Ka. El Ka es una rueda, cuyo único propósito es girar, y al final vuelve al mismo lugar donde empieza. Lo que haces vuelve a perseguirte.\n\nEl tiempo es un rostro en el agua.\n\nSi es el Ka, vendrá como el viento, y tus planes resistirán ante él no más que un granero ante un ciclón.\n\n</span><span foreground='white'>¿Cual es el número de tu ka-tet?</span>")
 	end
 
@@ -96,13 +98,13 @@ class RubyRueda < Gtk::Window
 
                 #General config         
                 set_border_width 10
-                override_background_color :normal, Gdk::RGBA::new(0.6, 0.25, 0.75, 0.9)
+                override_background_color :normal, Gdk::RGBA::new(0.4, 0.4, 0.4, 0.9)
                 set_title "Rueda del Ka de "+num
                 signal_connect "destroy" do
-                        Gtk.main_quit
+                        self.destroy
                 end
-		set_default_size 210, 210
-                set_window_position(Gtk::Window::POS_MOUSE)
+		set_default_size 260, [200+Integer(num)**2, 900].min
+                set_window_position(Gtk::WindowPosition::MOUSE)
 
 		#scroll window
 		scroll = Gtk::ScrolledWindow.new
@@ -114,7 +116,7 @@ class RubyRueda < Gtk::Window
 	end
 
 	def update_text text
-		@label.set_text @label.text+text+"\n"
+		@label.set_markup("<span foreground='white'><b>"+@label.text+text+"\n</b></span>")
 	end
 end
 
