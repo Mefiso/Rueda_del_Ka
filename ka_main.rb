@@ -79,9 +79,10 @@ class RubyKa < Gtk::Window
 		label.set_markup("<span foreground='green'>Ka. El Ka es una rueda, cuyo único propósito es girar, y al final vuelve al mismo lugar donde empieza. Lo que haces vuelve a perseguirte.\n\nEl tiempo es un rostro en el agua.\n\nSi es el Ka, vendrá como el viento, y tus planes resistirán ante él no más que un granero ante un ciclón.\n\n</span><span foreground='white'>¿Cual es el número de tu ka-tet?</span>")
 	end
 
-	def rueda_window (num)
+	def rueda_window (num, handler)
 		new_window = RubyRueda.new(num)
-		return new_window
+		handler.call(new_window)
+		GLib::Source::REMOVE
 	end
 	
 end
@@ -117,6 +118,7 @@ class RubyRueda < Gtk::Window
 
 	def update_text text
 		@label.set_markup("<span foreground='white'><b>"+@label.text+text+"\n</b></span>")
+		GLib::Source::REMOVE
 	end
 end
 
