@@ -66,23 +66,19 @@ class RubyKa < Gtk::Window
 
 	def on_key_release sender, label
 		label.set_markup("<span foreground='green'><b>Ka-tet del "+sender.text+"</b></span>")
-                rueda = Rueda.new sender.text, method(:rueda_window)
+                new_window = RubyRueda.new(sender.text)
+		rueda = Rueda.new sender.text, new_window.method(:update_text)
 	end
 	
 	def on_ok_button_clicked entry, label
 		label.set_markup("<span foreground='green'><b>Ka-tet del "+entry.text+"</b></span>")
-		rueda = Rueda.new entry.text, method(:rueda_window)
+		new_window = RubyRueda.new(entry.text)
+		rueda = Rueda.new entry.text, new_window.method(:update_text)	
 	end
 
 	def on_reset_clicked label, entry
 		entry.set_text("")
 		label.set_markup("<span foreground='green'>Ka. El Ka es una rueda, cuyo único propósito es girar, y al final vuelve al mismo lugar donde empieza. Lo que haces vuelve a perseguirte.\n\nEl tiempo es un rostro en el agua.\n\nSi es el Ka, vendrá como el viento, y tus planes resistirán ante él no más que un granero ante un ciclón.\n\n</span><span foreground='white'>¿Cual es el número de tu ka-tet?</span>")
-	end
-
-	def rueda_window (num, handler)
-		new_window = RubyRueda.new(num)
-		handler.call(new_window)
-		GLib::Source::REMOVE
 	end
 	
 end

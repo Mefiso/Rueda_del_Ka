@@ -5,31 +5,28 @@ class Rueda
 		@ka_num = Integer(num)
 		@ka_wheel = {0 => 0}
 		@langostruosidades = ["¿Pica chica?", "¿Dada cham?", "¿Deda chec?", "¿Toma choma?", "¿Duma chuma?"]
-		@t1 = Thread.new{run()}
+		t1 = Thread.new{calcular()}
 		@hand = handler
 	end
-
-	def run
-		GLib::Idle.add{@hand.call(@ka_num.to_s, method(:calcular))}
-	end
 	
-	def calcular window
+	def calcular
 		if !(is_prime? @ka_num)
-  			GLib::Idle.add{window.update_text "Has olvidado el rostro de tu padre.\n"}
+  			GLib::Idle.add{@hand.call("Has olvidado el rostro de tu padre.\n")}
 		elsif @ka_num==1
-  			GLib::Idle.add{window.update_text "Eso es Gan, pero no Dis.\n"}
+  			GLib::Idle.add{@hand.call("Eso es Gan, pero no Dis.\n")}
 		else
-  			i = 2
+  			#GLib::Idle.add{@hand.call(@langostruosidades[rand(5)])}
+			i = 2
   			while @ka_wheel.length < @ka_num
     				if is_prime?(i) && !(@ka_wheel.value? i%@ka_num)
       					@ka_wheel[i] = i%@ka_num
-      					GLib::Idle.add{window.update_text @langostruosidades[rand(5)]}
-    				end
+					GLib::Idle.add{@hand.call(@langostruosidades[rand(5)])}
+       				end
     				i += 1
   			end
-  			GLib::Idle.add{window.update_text "La rueda del Ka de #{@ka_num} es:"}
-  			@ka_wheel.each_key{ |x| GLib::Idle.add{window.update_text "#{x} => #{@ka_wheel[x]}"}}
-  			GLib::Idle.add{window.update_text "Digamos gracias, sai.\n"}
+  			GLib::Idle.add{@hand.call("La rueda del Ka de #{@ka_num} es:")}
+  			@ka_wheel.each_key{ |x| GLib::Idle.add{@hand.call("#{x} => #{@ka_wheel[x]}")}}
+  			GLib::Idle.add{@hand.call("Digamos gracias, sai.\n")}
 		end
 	end
 	
