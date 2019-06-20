@@ -1,6 +1,6 @@
 # Rueda_del_Ka
 ## Introduction
-Well, this all began one day when a friend of mine told me that he had come up with an idea of a puzzle for a game that we are making. That puzzle, explained more widely in [Technical details](##Technical-details), consisted in the players trying to complete a wheel of buttons (pressing all of them) with a certain restriction: a button must be pressed when the count of prime numbers in order falls in it, starting for the first button you press. 
+Well, this all began one day when a friend of mine told me that he had come up with an idea of a puzzle for a game that we are making. That puzzle, explained more widely in [Technical details](#Technical-details), consisted in the players trying to complete a wheel of buttons (pressing all of them) with a certain restriction: a button must be pressed when the count of prime numbers in order falls in it, starting for the first button you press. 
 This little program is a **GUI app** that uses event-dispatching thread and **multithreading** to discover the order in which buttons must be pressed for a different number of elements in a wheel. 0 is the first you push and the others are enumerated in clockwise order, so the prime number count is in that direction.
 
 ## Background
