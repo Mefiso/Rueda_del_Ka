@@ -8,7 +8,7 @@ This little program is a **GUI app** that uses event-dispatching thread and **mu
 ### Story
 I realized that the wheel only completes if the number of elements in it is a prime number. Then I investigated more in it and deduced what was happening (see [Proof](#Proof)). Then I decided to write this program in order to practice multithreading programming and GUI programming, but also to learn some **Ruby** (this is my first program in ruby).
 
-Also you will see that the sentences that appear in the window of the GUI make no sense. That is because they are iconic quotes of the book series *The Dark Tower* by Stephen King in its Spanish translation. My friend and I love that series, so that's why it is here. If you are not interested **just ignore them**. Then again, when in the first window you see the question *"¿Cuál es el número de tu Ka-tet?"*, you just have to introduce the number of elements in the wheel you want to investigate.
+Also, you will see that the sentences that appear in the window of the GUI may not make sense to you. That is because they are iconic quotes of the book series *The Dark Tower* by Stephen King in its Spanish translation. My friend and I love that series, and that's why they are here. If you are not interested **just ignore them**. Then again, when in the first window you see the question *"¿Cuál es el número de tu Ka-tet?"*, you just have to introduce the number of elements in the wheel you want to investigate.
 
 ### Proof
 
