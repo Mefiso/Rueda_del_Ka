@@ -32,3 +32,6 @@ I managed to prove the necessary condition (that is, from left to right), by pro
 I haven't had time to prove the sufficient condition (from right to left).
 ## Technical details
 ### Run it
+<TO BE COMPLETED*>
+
+* Project is finished but documentation is not.
