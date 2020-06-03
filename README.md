@@ -11,6 +11,11 @@ I realized that the wheel only completes if the number of elements in it is a pr
 Also, you will see that the sentences that appear in the window of the GUI may not make sense to you. That is because they are iconic quotes of the book series *The Dark Tower* by Stephen King in its Spanish translation. My friend and I love that series, and that's why they are here. If you are not interested **just ignore them**. Then again, when in the first window you see the question *"¿Cuál es el número de tu Ka-tet?"*, you just have to introduce the number of elements in the wheel you want to investigate.
 
 ### Proof
+Let's explain again the game: imagine a set of buttons displayed forming a wheel; you press one, and then start counting advancing one button at a time (clockwise for example); when the count achieves a prime number, you press that button and continue counting until all buttons are pressed. What happens is that if the total number of buttons in the wheel is not a prime number, the process won't end. Better said, we can observe that the only buttons pressed will be: the ones in which the count is one of the prime factors of *n* (obviously), or those where the count is an element belonging to the reduced residue system modulo *n*, where *n* is the number of elements in the wheel. 
 
+The reduced residue system modulo *n* contains all the elements of the integers modulo *n* ($\mathbb{Z}/n\mathbb{Z}$) that are coprimes with *n* and mutually incongruent modulo *n*. Thus, evidently, it will only contain all the elements of the integers modulo *n* if it *n* is a prime number. The question, then, is: why can only the the elements of the reduced residue system be pressed? 
+
+Mathematically we observe:
+$
 ## Technical details
 ### Run it
