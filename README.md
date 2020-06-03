@@ -16,6 +16,14 @@ Let's explain again the game: imagine a set of buttons displayed forming a wheel
 The reduced residue system modulo *n* contains all the elements of the integers modulo *n* that are coprimes with *n* and mutually incongruent modulo *n*. Thus, evidently, it will only contain all the elements of the integers modulo *n* if it *n* is a prime number. The question, then, is: why can only the the elements of the reduced residue system be pressed? 
 
 Mathematically we observe:
-![Image of Yaktocat](https://)
+![formula](https://github.com/Mefiso/Rueda_del_Ka/blob/master/Captura.PNG)
+where p > n, p is prime.
+or
+![formula2](https://github.com/Mefiso/Rueda_del_Ka/blob/master/Captura2.PNG)
+(right side is equivalent to say that k is in RRS(n)).
+I managed to prove the necessary condition (that is, from left to right), by proving the oposite -if gcd(n,k) is different than 1, then p can't be a prime number.
+![formula3](https://github.com/Mefiso/Rueda_del_Ka/blob/master/primes.PNG)
+
+I haven't had time to prove the sufficient condition (from right to left).
 ## Technical details
 ### Run it
