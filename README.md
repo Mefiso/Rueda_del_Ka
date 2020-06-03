@@ -34,4 +34,4 @@ I haven't had time to prove the sufficient condition (from right to left).
 ### Run it
 <TO BE COMPLETED*>
 
-* Project is finished but documentation is not.
+\*Project is finished but documentation is not.
