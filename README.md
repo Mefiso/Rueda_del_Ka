@@ -13,9 +13,9 @@ Also, you will see that the sentences that appear in the window of the GUI may n
 ### Proof
 Let's explain again the game: imagine a set of buttons displayed forming a wheel; you press one, and then start counting advancing one button at a time (clockwise for example); when the count achieves a prime number, you press that button and continue counting until all buttons are pressed. What happens is that if the total number of buttons in the wheel is not a prime number, the process won't end. Better said, we can observe that the only buttons pressed will be: the ones in which the count is one of the prime factors of *n* (obviously), or those where the count is an element belonging to the reduced residue system modulo *n*, where *n* is the number of elements in the wheel. 
 
-The reduced residue system modulo *n* contains all the elements of the integers modulo *n* ($\mathbb{Z}/n\mathbb{Z}$) that are coprimes with *n* and mutually incongruent modulo *n*. Thus, evidently, it will only contain all the elements of the integers modulo *n* if it *n* is a prime number. The question, then, is: why can only the the elements of the reduced residue system be pressed? 
+The reduced residue system modulo *n* contains all the elements of the integers modulo *n* that are coprimes with *n* and mutually incongruent modulo *n*. Thus, evidently, it will only contain all the elements of the integers modulo *n* if it *n* is a prime number. The question, then, is: why can only the the elements of the reduced residue system be pressed? 
 
 Mathematically we observe:
-$
+![Image of Yaktocat](https://)
 ## Technical details
 ### Run it
