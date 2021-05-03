@@ -20,7 +20,8 @@ Mathematically we observe:
 ![formula](https://github.com/Mefiso/Rueda_del_Ka/blob/master/Captura.PNG)
 
 where p > n, p is prime.
-or
+
+Or
 
 ![formula2](https://github.com/Mefiso/Rueda_del_Ka/blob/master/Captura2.PNG)
 
